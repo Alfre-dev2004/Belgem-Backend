@@ -1,0 +1,11 @@
+SET search_path TO v1, public;
+
+CREATE TABLE IF NOT EXISTS proveedor (
+  id BIGSERIAL PRIMARY KEY,
+  nombre VARCHAR(160) NOT NULL,
+  email VARCHAR(160) UNIQUE,
+  telefono VARCHAR(30) UNIQUE,
+  direccion VARCHAR(200),
+  fecha_alta TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  activo BOOLEAN NOT NULL DEFAULT TRUE
+);

@@ -1,0 +1,10 @@
+SET search_path TO v1, public;
+
+CREATE TABLE IF NOT EXISTS cliente (
+  id BIGSERIAL PRIMARY KEY,
+  nombre VARCHAR(120) NOT NULL,
+  email VARCHAR(160) UNIQUE,
+  telefono VARCHAR(30) UNIQUE,
+  fecha_alta TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  activo BOOLEAN NOT NULL DEFAULT TRUE
+);
