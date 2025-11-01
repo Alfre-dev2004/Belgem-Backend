@@ -23,7 +23,7 @@ Backend del sistema de gestión **Belgem ERP**, desarrollado en **Spring Boot** 
 | Nº | Nombre completo | Rol | Especialidad / Área |
 |----|------------------|-----|---------------------|
 | 1  | Alfredo Noriega  | Jefe de equipo | Backend (Spring Boot, PostgreSQL) |
-| 2  | *(Nombre aquí)* | Desarrollador DAM | Backend |
+| 2  | *Sara Martínez* | Jefe de equipo  | Backend |
 | 3  | *(Nombre aquí)* | Desarrollador DAM | Backend |
 | 4  | *(Nombre aquí)* | Desarrollador DAM | Backend |
 | 5  | *(Nombre aquí)* | Desarrollador DAM | Backend |
