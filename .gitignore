@@ -46,3 +46,7 @@ target/
 # Credenciales
 *.env
 *.env.*
+
+# Archivos y carpetas innecesarias del proyecto
+HELP.md
+src/main/resources/
