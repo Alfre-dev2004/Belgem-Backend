@@ -18,14 +18,5 @@ Backend del sistema de gestión **Belgem ERP**, desarrollado en **Spring Boot** 
 
 ---
 
-## 👩‍💻👨‍💻 Integrantes del equipo Belgem
+## ⚙️ Estructura del proyecto
 
-| Nº | Nombre completo | Rol | Especialidad / Área |
-|----|----------------|-----|---------------------|
-| 1  | Alfredo Noriega | Jefe de equipo | Backend (Spring Boot, PostgreSQL) |
-| 2  | *Sara Martínez* | Jefe de equipo  | Backend |
-| 3  | Bianca Sánchez | Desarrollador DAM | Backend |
-| 4  | Biel Ramos     | Desarrollador DAM | Backend |
-| 5  | *(Nombre aquí)* | Desarrollador DAM | Backend |
-| 6  | *(Nombre aquí)* | Desarrolladora DAW | Frontend |
-| 7  | *(Nombre aquí)* | Desarrolladora DAW | Frontend |
