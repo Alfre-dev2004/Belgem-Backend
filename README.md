@@ -18,7 +18,7 @@ Backend del sistema de gestión **Belgem ERP**, desarrollado en **Spring Boot** 
 
 ---
 
-## 👩‍💻👨‍💻 Integrantes del equipo Belgem
+## ⚙️ Estructura del proyecto
 
 | Nº | Nombre completo | Rol | Especialidad / Área |
 |----|-----------------|-----|---------------------|
