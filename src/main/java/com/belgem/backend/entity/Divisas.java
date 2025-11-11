@@ -16,8 +16,17 @@ public class Divisas {
     @Column(name = "name")
     private String name;
 
-    public Divisas() {}
+    // para Spring/JPA
+    public Divisas() {
+    }
 
+    // este es para asegurarBasicas()
+    public Divisas(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
+
+    // getters y setters
     public Long getId() {
         return id;
     }
