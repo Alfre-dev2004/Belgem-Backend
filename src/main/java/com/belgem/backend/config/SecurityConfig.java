@@ -13,6 +13,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Desactiva CSRF para permitir peticiones externas
                 .authorizeHttpRequests(auth -> auth
+                        // Swagger abierto
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
                         .anyRequest().permitAll() // Permite todas las rutas sin autenticación
                 );
         return http.build();
