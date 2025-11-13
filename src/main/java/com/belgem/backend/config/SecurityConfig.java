@@ -11,16 +11,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Desactiva CSRF para permitir peticiones externas
+                // Desactiva CSRF para permitir POST/PUT/DELETE desde Postman
+                .csrf(csrf -> csrf.disable())
+
+                // Permite acceso libre a todos los endpoints del módulo articulos
                 .authorizeHttpRequests(auth -> auth
-                        // Swagger abierto
-                        .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html"
-                        ).permitAll()
-                        .anyRequest().permitAll() // Permite todas las rutas sin autenticación
-                );
+                        .requestMatchers("/articulos/**").permitAll()
+                        .anyRequest().permitAll() // también puedes dejar todo público mientras desarrollas
+                )
+
+                // Desactiva autenticación básica y formulario
+                .httpBasic(httpBasic -> httpBasic.disable())
+                .formLogin(form -> form.disable());
+
         return http.build();
     }
 }
