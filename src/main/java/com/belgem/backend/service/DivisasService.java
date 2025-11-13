@@ -2,6 +2,7 @@ package com.belgem.backend.service;
 
 import com.belgem.backend.entity.Divisas;
 import com.belgem.backend.repository.DivisasRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,15 +17,17 @@ public class DivisasService {
     }
 
     public List<Divisas> listar() {
+        // nos aseguramos de que existan las 3
+        asegurarBasicas();
         return divisasRepository.findAll();
     }
 
-    public Divisas guardar(Divisas divisa) {
-        // si quieres evitar duplicados por código:
-        if (divisa.getCode() != null && divisasRepository.existsByCode(divisa.getCode())) {
-            throw new RuntimeException("Ya existe una divisa con código " + divisa.getCode());
+    public Divisas guardar(Divisas divisas) {
+        // evitar duplicados por código:
+        if (divisas.getCode() != null && divisasRepository.existsByCode(divisas.getCode())) {
+            throw new RuntimeException("Ya existe una divisa con código " + divisas.getCode());
         }
-        return divisasRepository.save(divisa);
+        return divisasRepository.save(divisas);
     }
 
     public Divisas actualizar(Long id, Divisas data) {
@@ -48,5 +51,22 @@ public class DivisasService {
     public Divisas obtenerPorId(Long id) {
         return divisasRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Divisa no encontrada con id " + id));
+    }
+    // se ejecuta justo al arrancar la app
+    @PostConstruct
+    private void asegurarBasicas() {
+        // EUR
+        if (!divisasRepository.existsByCode("EUR")) {
+            divisasRepository.save(new Divisas("EUR", "EURO"));
+        }
+        // USD
+        if (!divisasRepository.existsByCode("USD")) {
+            divisasRepository.save(new Divisas("USD", "DÓLAR USA"));
+        }
+        // dólar propio
+        if (!divisasRepository.existsByCode("USX")) {
+            divisasRepository.save(new Divisas("USX", "DÓLAR BELGEM +10%"));
+        }
+
     }
 }
