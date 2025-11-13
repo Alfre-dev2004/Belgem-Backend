@@ -11,36 +11,36 @@ import java.util.List;
 @RequestMapping("/divisas")
 public class DivisasController {
 
-    private final DivisasService divisaService;
+    private final DivisasService divisasService;
 
-    public DivisasController(DivisasService divisaService) {
-        this.divisaService = divisaService;
+    public DivisasController(DivisasService divisasService) {
+        this.divisasService = divisasService;
     }
 
     @GetMapping
     public List<Divisas> listar() {
-        return divisaService.listar();
+        return divisasService.listar();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Divisas> obtener(@PathVariable Long id) {
-        return ResponseEntity.ok(divisaService.obtenerPorId(id));
+        return ResponseEntity.ok(divisasService.obtenerPorId(id));
     }
 
     @PostMapping
     public ResponseEntity<Divisas> crear(@RequestBody Divisas divisa) {
-        Divisas guardada = divisaService.guardar(divisa);
+        Divisas guardada = divisasService.guardar(divisa);
         return ResponseEntity.ok(guardada);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Divisas> actualizar(@PathVariable Long id, @RequestBody Divisas divisa) {
-        return ResponseEntity.ok(divisaService.actualizar(id, divisa));
+        return ResponseEntity.ok(divisasService.actualizar(id, divisa));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        divisaService.eliminar(id);
+        divisasService.eliminar(id);
         return ResponseEntity.noContent().build();
     }
 }

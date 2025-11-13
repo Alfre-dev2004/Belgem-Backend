@@ -1,10 +1,18 @@
 SET search_path TO v1, public;
 
 CREATE TABLE IF NOT EXISTS cliente (
-  id BIGSERIAL PRIMARY KEY,
-  nombre VARCHAR(120) NOT NULL,
-  email VARCHAR(160) UNIQUE,
-  telefono VARCHAR(30) UNIQUE,
-  fecha_alta TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  activo BOOLEAN NOT NULL DEFAULT TRUE
+
+    idCliente BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(120) NOT NULL,
+    nif VARCHAR(20),
+    direccion VARCHAR(200),
+    ciudad VARCHAR(120),
+    codigoPostal VARCHAR(15),
+    telefono VARCHAR(25),
+    email VARCHAR(160),
+    tipoCliente VARCHAR(60),
+    zona VARCHAR(80),
+    representante VARCHAR(120),
+    observaciones TEXT
+
 );
