@@ -15,8 +15,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Swagger abierto
                         .requestMatchers(
-                                "/v3/api-docs/",
-                                "/swagger-ui/",
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
                                 "/swagger-ui.html"
                         ).permitAll()
                         .anyRequest().permitAll() // Permite todas las rutas sin autenticación
