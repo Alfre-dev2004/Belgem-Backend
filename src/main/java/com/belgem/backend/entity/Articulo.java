@@ -12,7 +12,7 @@ public class Articulo {
     @Id
     // Indica que el valor de la clave primaria se genera automáticamente (auto_increment)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long articulo;
+    private Long representanteld;
 
     // Campo que almacenará el nombre del artículo
     private String nombre;
@@ -27,12 +27,12 @@ public class Articulo {
     private Integer cantidad;
 
     // Getter y Setter de la clave primaria
-    public Long getArticulo() {
-        return articulo;
+    public Long getRepresentanteld() {
+        return representanteld;
     }
 
-    public void setArticulo(Long articulo) {
-        this.articulo = articulo;
+    public void setRepresentanteld(Long articulo) {
+        this.representanteld = articulo;
     }
 
     // Getter y Setter del nombre
