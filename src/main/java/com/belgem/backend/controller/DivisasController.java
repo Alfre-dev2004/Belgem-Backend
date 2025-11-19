@@ -1,7 +1,7 @@
 package com.belgem.backend.controller;
 
 import com.belgem.backend.domain.model.Divisas;
-import com.belgem.backend.service.DivisasService;
+import com.belgem.backend.application.service.DivisasService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
