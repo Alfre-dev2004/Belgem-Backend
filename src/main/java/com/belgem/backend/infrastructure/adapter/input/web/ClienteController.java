@@ -1,7 +1,7 @@
-package com.belgem.backend.infrastructure.adapter.in.web;
+package com.belgem.backend.infrastructure.adapter.input.web;
 
 import com.belgem.backend.domain.model.Cliente;
-import com.belgem.backend.domain.port.in.GestionarClienteUseCase;
+import com.belgem.backend.domain.port.input.GestionarClienteUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

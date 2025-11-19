@@ -1,7 +1,7 @@
-package com.belgem.backend.infrastructure.adapter.in.web;
+package com.belgem.backend.infrastructure.adapter.input.web;
 
 import com.belgem.backend.domain.model.Divisas;
-import com.belgem.backend.domain.port.in.GestionarDivisasUseCase;
+import com.belgem.backend.domain.port.input.GestionarDivisasUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

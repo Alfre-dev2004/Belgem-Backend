@@ -1,8 +1,8 @@
 package com.belgem.backend.application.service; // PAQUETE ACTUALIZADO
 
 import com.belgem.backend.domain.model.Articulo;
-import com.belgem.backend.domain.port.in.GestionarArticuloUseCase; // IMPLEMENTA PORT DE ENTRADA
-import com.belgem.backend.domain.port.out.ArticuloRepositoryPort; // INYECTA PORT DE SALIDA
+import com.belgem.backend.domain.port.input.GestionarArticuloUseCase; // IMPLEMENTA PORT DE ENTRADA
+import com.belgem.backend.domain.port.output.ArticuloRepositoryPort; // INYECTA PORT DE SALIDA
 import org.springframework.stereotype.Service;
 
 import java.util.List;

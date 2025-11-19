@@ -1,8 +1,8 @@
 package com.belgem.backend.application.service; // PAQUETE ACTUALIZADO
 
 import com.belgem.backend.domain.model.Divisas;
-import com.belgem.backend.domain.port.in.GestionarDivisasUseCase; // IMPLEMENTA PORT DE ENTRADA
-import com.belgem.backend.domain.port.out.DivisasRepositoryPort; // INYECTA PORT DE SALIDA
+import com.belgem.backend.domain.port.input.GestionarDivisasUseCase; // IMPLEMENTA PORT DE ENTRADA
+import com.belgem.backend.domain.port.output.DivisasRepositoryPort; // INYECTA PORT DE SALIDA
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
