@@ -1,4 +1,4 @@
-package com.belgem.backend.entity;
+package com.belgem.backend.domain.model; // PAQUETE ACTUALIZADO
 
 import jakarta.persistence.*;
 
@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class Divisas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id") // Mapea a la columna real 'id'
+    private Long divisaId; // NOMBRE ESTANDARIZADO
 
     @Column(name = "code", nullable = false)
     private String code;
@@ -19,8 +20,8 @@ public class Divisas {
     public Divisas(String code, String name) { this.code = code; this.name = name; }
 
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getDivisaId() { return divisaId; }
+    public void setDivisaId(Long divisaId) { this.divisaId = divisaId; }
 
     public String getCode() { return code; }
     public void setCode(String code) { this.code = code; }

@@ -1,6 +1,6 @@
 package com.belgem.backend.controller;
 
-import com.belgem.backend.entity.Representante;
+import com.belgem.backend.domain.model.Representante;
 import com.belgem.backend.service.RepresentanteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

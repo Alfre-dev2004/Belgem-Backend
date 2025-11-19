@@ -1,4 +1,4 @@
-package com.belgem.backend.entity;
+package com.belgem.backend.domain.model;
 
 import jakarta.persistence.*;
 
@@ -12,7 +12,8 @@ public class Articulo {
     @Id
     // Indica que el valor de la clave primaria se genera automáticamente (auto_increment)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long articulo;
+    @Column(name = "articulo")
+    private Long articuloId;
 
     // Campo que almacenará el nombre del artículo
     private String nombre;
@@ -27,12 +28,12 @@ public class Articulo {
     private Integer cantidad;
 
     // Getter y Setter de la clave primaria
-    public Long getArticulo() {
-        return articulo;
+    public Long getArticuloId() {
+        return articuloId;
     }
 
-    public void setArticulo(Long articulo) {
-        this.articulo = articulo;
+    public void setArticuloId(Long articuloId) {
+        this.articuloId = articuloId;
     }
 
     // Getter y Setter del nombre

@@ -1,7 +1,8 @@
-package com.belgem.backend.service;
+package com.belgem.backend.application.service; // PAQUETE ACTUALIZADO
 
-import com.belgem.backend.entity.Articulo;
-import com.belgem.backend.repository.ArticuloRepository;
+import com.belgem.backend.domain.model.Articulo;
+import com.belgem.backend.domain.port.in.GestionarArticuloUseCase; // IMPLEMENTA PORT DE ENTRADA
+import com.belgem.backend.domain.port.out.ArticuloRepositoryPort; // INYECTA PORT DE SALIDA
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,52 +10,56 @@ import java.util.List;
 // Marca esta clase como un "Service" en Spring
 // Los Services contienen la lógica de negocio de la aplicación
 @Service
-public class ArticuloService {
+public class ArticuloService implements GestionarArticuloUseCase {
 
     // Inyecta el repositorio de Articulo para acceder a la base de datos
-    private final ArticuloRepository articuloRepository;
+    private final ArticuloRepositoryPort repositoryPort;
 
     // Constructor que recibe el repositorio (inyección de dependencias)
-    public ArticuloService(ArticuloRepository articuloRepository) {
-        this.articuloRepository = articuloRepository;
+    public ArticuloService(ArticuloRepositoryPort repositoryPort) {
+        this.repositoryPort = repositoryPort;
     }
 
     // Método para listar todos los artículos
+    @Override
     public List<Articulo> listar() {
         // Usa el método findAll() del repositorio
-        return articuloRepository.findAll();
+        return repositoryPort.findAll();
     }
 
     // Método para guardar un nuevo artículo
+    @Override
     public Articulo guardar(Articulo articulo) {
         // Usa el método save() del repositorio
-        return articuloRepository.save(articulo);
+        return repositoryPort.save(articulo);
     }
 
     // Método para eliminar un artículo por su id
-    public void eliminar(Long id) {
+    @Override
+    public void eliminar(Long articuloId) { // ID ACTUALIZADO
         // Primero verifica si el artículo existe
-        if (!articuloRepository.existsById(id)) {
+        if (!repositoryPort.existsById(articuloId)) {
             // Si no existe, lanza una excepción
             throw new IllegalArgumentException("Articulo no encontrado");
         }
         // Si existe, lo elimina usando deleteById()
-        articuloRepository.deleteById(id);
+        repositoryPort.deleteById(articuloId);
     }
 
     // Método para actualizar un artículo existente
-    public Articulo actualizar(Long id, Articulo articuloActualizado) {
+    @Override
+    public Articulo actualizar(Long articuloId, Articulo articuloActualizado) { // ID ACTUALIZADO
         // Busca el artículo por su id
-        return articuloRepository.findById(id).map(articulo -> {
+        return repositoryPort.findById(articuloId).map(articulo -> { // ID ACTUALIZADO
             // Si lo encuentra, actualiza sus campos
             articulo.setNombre(articuloActualizado.getNombre());
             articulo.setPrecio(articuloActualizado.getPrecio());
             articulo.setDto(articuloActualizado.getDto());
             articulo.setCantidad(articuloActualizado.getCantidad());
             // Guarda el artículo actualizado y lo devuelve
-            return articuloRepository.save(articulo);
+            return repositoryPort.save(articulo);
             // Si no encuentra el artículo, lanza una excepción
-        }).orElseThrow(() -> new RuntimeException("Artículo no encontrado con id: " + id));
+        }).orElseThrow(() -> new RuntimeException("Artículo no encontrado con id: " + articuloId)); // ID ACTUALIZADO
     }
 
 }

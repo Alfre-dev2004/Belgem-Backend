@@ -1,4 +1,4 @@
-package com.belgem.backend.entity;
+package com.belgem.backend.domain.model; // PAQUETE ACTUALIZADO
 
 import jakarta.persistence.*;
 
@@ -9,7 +9,7 @@ public class Representante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_representante")
-    private Long idRepresentante;  // Identificador único (clave primaria)
+    private Long representanteId;  // Identificador único (clave primaria)
 
     @Column(name = "nombre")
     private String nombre;
@@ -34,12 +34,12 @@ public class Representante {
 
     // --- Getters y Setters ---
 
-    public Long getIdRepresentante() {
-        return idRepresentante;
+    public Long getRepresentanteId() {
+        return representanteId;
     }
 
-    public void setIdRepresentante(Long idRepresentante) {
-        this.idRepresentante = idRepresentante;
+    public void setRepresentanteId(Long representanteId) {
+        this.representanteId = representanteId;
     }
 
     public String getNombre() {

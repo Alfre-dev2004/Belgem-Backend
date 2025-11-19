@@ -1,6 +1,6 @@
 package com.belgem.backend.controller;
 
-import com.belgem.backend.entity.Articulo;
+import com.belgem.backend.domain.model.Articulo;
 import com.belgem.backend.service.ArticuloService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
