@@ -1,15 +1,9 @@
-package com.belgem.backend.domain.model; // PAQUETE ACTUALIZADO
+package com.belgem.backend.domain.model;
 
-import com.belgem.backend.domain.model.Representante; // Se necesita para la relación
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "cliente")
+// NO hay imports de jakarta.persistence.
+// NO hay anotaciones @Entity, @Table, @Id, @Column, @ManyToOne.
 public class Cliente {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // Mapea a la columna real 'id'
     private Long clienteId; // NOMBRE ESTANDARIZADO
 
     // Campos del CRUD original
@@ -26,9 +20,8 @@ public class Cliente {
     private String zona; // o relación
     private String observaciones;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_representante") // Asumiendo que existe una FK
-    private Representante representante; // Relación con Representante (Cartera)
+    // Relación con Representante (el POJO de Dominio)
+    private Representante representante;
 
     // Constructor, Getters y Setters...
 
