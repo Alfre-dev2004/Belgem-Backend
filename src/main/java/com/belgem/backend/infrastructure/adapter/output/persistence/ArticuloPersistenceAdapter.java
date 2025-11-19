@@ -2,8 +2,8 @@ package com.belgem.backend.infrastructure.adapter.output.persistence;
 
 import com.belgem.backend.domain.model.Articulo;
 import com.belgem.backend.domain.port.output.ArticuloRepositoryPort;
-import com.belgem.backend.infrastructure.adapter.out.persistence.jpa.ArticuloJpaEntity;
-import com.belgem.backend.infrastructure.adapter.out.persistence.jpa.ArticuloJpaRepository;
+import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.ArticuloJpaEntity;
+import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.ArticuloJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -2,8 +2,8 @@ package com.belgem.backend.infrastructure.adapter.output.persistence;
 
 import com.belgem.backend.domain.model.Divisas;
 import com.belgem.backend.domain.port.output.DivisasRepositoryPort;
-import com.belgem.backend.infrastructure.adapter.out.persistence.jpa.DivisasJpaEntity;
-import com.belgem.backend.infrastructure.adapter.out.persistence.jpa.DivisasJpaRepository;
+import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.DivisasJpaEntity;
+import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.DivisasJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

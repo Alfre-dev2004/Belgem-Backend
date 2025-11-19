@@ -2,8 +2,8 @@ package com.belgem.backend.infrastructure.adapter.output.persistence;
 
 import com.belgem.backend.domain.model.Cliente;
 import com.belgem.backend.domain.port.output.ClienteRepositoryPort;
-import com.belgem.backend.infrastructure.adapter.out.persistence.jpa.ClienteJpaEntity;
-import com.belgem.backend.infrastructure.adapter.out.persistence.jpa.ClienteJpaRepository;
+import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.ClienteJpaEntity;
+import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.ClienteJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
