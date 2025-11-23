@@ -9,8 +9,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
-/*“adapter” encargado de mover datos entre dominio ↔ BD.*/
+/**
+ * Adapter de persistencia para el módulo Divisas.
+ * Se encarga de convertir entre:
+ *  - Dominio (Divisa)
+ *  - Entidad JPA (DivisaJpaEntity)
+ * usando DivisaMapper, y delega en DivisaJpaRepository para acceder a BD.
+ */
 @Repository
 public class DivisaPersistenceAdapter implements DivisaRepositoryPort {
 

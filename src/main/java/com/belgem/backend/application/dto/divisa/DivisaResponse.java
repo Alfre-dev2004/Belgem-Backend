@@ -29,6 +29,10 @@ public class DivisaResponse {
 
     @Override
     public String toString() {
-        return "DivisaResponse{id=" + id + ", code='" + code + "', name='" + name + "'}";
+        return "DivisaResponse{" +
+                "id=" + id +'\''+
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

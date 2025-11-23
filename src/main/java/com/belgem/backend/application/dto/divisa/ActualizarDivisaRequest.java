@@ -5,10 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 // No tiene ID porque viene en la URL
 public class ActualizarDivisaRequest {
 
-    @NotBlank(message = "El código no puede estar vacío")
+
     private String code;
 
-    @NotBlank(message = "El nombre no puede estar vacío")
     private String name;
 
     public ActualizarDivisaRequest() {}
@@ -28,6 +27,9 @@ public class ActualizarDivisaRequest {
 
     @Override
     public String toString() {
-        return "ActualizarDivisaRequest{code='" + code + "', name='" + name + "'}";
+        return "ActualizarDivisaRequest{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
