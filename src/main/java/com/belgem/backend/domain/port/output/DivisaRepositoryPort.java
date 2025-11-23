@@ -12,6 +12,8 @@ public interface DivisaRepositoryPort {
 
     Optional<Divisa> findById(Long id);
 
+    Optional<Divisa> findByCode(String code);
+
     List<Divisa> findAll();
 
     void deleteById(Long id);
