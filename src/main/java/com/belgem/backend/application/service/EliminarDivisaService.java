@@ -1,4 +1,4 @@
-package com.belgem.backend.application.service.divisa;
+package com.belgem.backend.application.service;
 
 import com.belgem.backend.domain.port.output.DivisaRepositoryPort;
 import com.belgem.backend.domain.port.input.EliminarDivisaUseCase;

@@ -36,6 +36,12 @@ public class DivisaPersistenceAdapter implements DivisaRepositoryPort {
     }
 
     @Override
+    public Optional<Divisa> findByCode(String code) {
+        return jpaRepository.findByCode(code)
+                .map(entity -> mapper.toDomain(entity));  //lambda para evitar ambigüedad
+    }
+
+    @Override
     public List<Divisa> findAll() {
         return jpaRepository.findAll().stream()
                 .map(mapper::toDomain)
