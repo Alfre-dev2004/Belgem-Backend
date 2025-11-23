@@ -1,4 +1,4 @@
-package com.belgem.backend.application.usecase.divisa;
+package com.belgem.backend.application.service.divisa;
 
 import com.belgem.backend.domain.model.Divisa;
 import com.belgem.backend.domain.port.input.ObtenerDivisaPorIdUseCase;

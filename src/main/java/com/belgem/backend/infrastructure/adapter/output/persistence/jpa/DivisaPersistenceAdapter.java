@@ -1,10 +1,8 @@
-package com.belgem.backend.infrastructure.adapter.output.persistence;
+package com.belgem.backend.infrastructure.adapter.output.persistence.jpa;
 
 import com.belgem.backend.domain.model.Divisa;
 import com.belgem.backend.domain.port.output.DivisaRepositoryPort;
-import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.DivisaJpaEntity;
 import com.belgem.backend.infrastructure.mapper.DivisaMapper;
-import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.DivisaJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

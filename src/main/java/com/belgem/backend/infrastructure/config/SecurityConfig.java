@@ -1,4 +1,4 @@
-package com.belgem.backend.infrastructure.adapter.output.persistence.config;
+package com.belgem.backend.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
