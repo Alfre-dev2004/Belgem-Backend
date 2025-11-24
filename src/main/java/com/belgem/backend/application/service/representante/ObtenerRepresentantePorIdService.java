@@ -32,6 +32,6 @@ public class ObtenerRepresentantePorIdService implements ObtenerRepresentantePor
     @Override
     public Representante obtener(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El representante con ID " + id + " no existe."));
+                .orElseThrow(() -> new IllegalArgumentException("El representante con ID " + id + " no existe."));
     }
 }

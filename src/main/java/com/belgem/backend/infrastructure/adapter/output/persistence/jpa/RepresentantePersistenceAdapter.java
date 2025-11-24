@@ -40,7 +40,7 @@ public class RepresentantePersistenceAdapter implements RepresentanteRepositoryP
     public List<Representante> findAll() {
         return repository.findAll().stream()
                 .map(mapper::toDomain)
-                .toList(); // Recomendación: usar .toList() en lugar de Collectors.toList()
+                .toList();
     }
 
     @Override
@@ -53,7 +53,6 @@ public class RepresentantePersistenceAdapter implements RepresentanteRepositoryP
         repository.deleteById(id);
     }
 
-    /** Comprueba si existe un representante con un código interno dado. */
     public boolean existsByInternalCode(String internalCode) {
         return repository.existsByInternalCode(internalCode);
     }
