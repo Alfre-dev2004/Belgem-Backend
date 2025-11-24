@@ -1,5 +1,16 @@
 package com.belgem.backend.application.dto.representante;
 
+/**
+ * DTO utilizado para recibir los datos necesarios para crear un representante.
+ *
+ * Este objeto define la **estructura del JSON** enviado desde el frontend
+ * al realizar la petición: **POST /representantes**.
+ *
+ * Importante:
+ *  - Es un DTO de entrada, únicamente transporta datos.
+ *  - No contiene lógica de negocio.
+ *  - No incluye validaciones ni anotaciones adicionales.
+ */
 public class CrearRepresentanteRequest {
 
     private String name;
@@ -9,8 +20,9 @@ public class CrearRepresentanteRequest {
     private String internalCode;
     private Long commission;
 
-    public CrearRepresentanteRequest() {}
-
+    /**
+     * Crea una instancia del DTO con todos los datos obligatorios.
+     */
     public CrearRepresentanteRequest(String name, String phone, String email, String zone, String internalCode, Long commission) {
         this.name = name;
         this.phone = phone;
@@ -27,10 +39,4 @@ public class CrearRepresentanteRequest {
     public String getInternalCode() { return internalCode; }
     public Long getCommission() { return commission; }
 
-    public void setName(String name) { this.name = name; }
-    public void setPhone(String phone) { this.phone = phone; }
-    public void setEmail(String email) { this.email = email; }
-    public void setZone(String zone) { this.zone = zone; }
-    public void setInternalCode(String internalCode) { this.internalCode = internalCode; }
-    public void setCommission(Long commission) { this.commission = commission; }
 }

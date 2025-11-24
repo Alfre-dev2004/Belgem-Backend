@@ -2,6 +2,11 @@ package com.belgem.backend.infrastructure.adapter.output.persistence.jpa;
 
 import jakarta.persistence.*;
 
+/**
+ * Entidad JPA para la persistencia de Representantes.
+ * Representa la tabla "representantes" en la base de datos
+ * y permite la interacción con JPA/Hibernate.
+ */
 @Entity
 @Table(schema = "belgem", name = "representantes")
 public class RepresentanteJpaEntity {
@@ -10,26 +15,39 @@ public class RepresentanteJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false)
     private String name;
 
-    @Column(name = "telefono")
+    @Column(name = "telefono", nullable = false)
     private String phone;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "zona")
+    @Column(name = "zona", nullable = false)
     private String zone;
 
-    @Column(name = "codigoInterno")
+    @Column(name = "codigoInterno", nullable = false)
     private String internalCode;
 
     @Column(name = "comision")
     private Long commission;
 
+    // Constructor vacío requerido por JPA
     public RepresentanteJpaEntity() {}
 
+    // Constructor sin ID, para crear nuevos representantes
+    public RepresentanteJpaEntity(String name, String phone, String email,
+                                  String zone, String internalCode, Long commission) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.zone = zone;
+        this.internalCode = internalCode;
+        this.commission = commission;
+    }
+
+    // Constructor completo con ID, para actualizar representantes existentes
     public RepresentanteJpaEntity(Long id, String name, String phone, String email,
                                   String zone, String internalCode, Long commission) {
         this.id = id;

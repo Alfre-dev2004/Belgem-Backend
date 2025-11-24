@@ -6,10 +6,16 @@ import com.belgem.backend.application.dto.representante.RepresentanteResponse;
 import com.belgem.backend.domain.model.Representante;
 import com.belgem.backend.domain.port.input.*;
 import com.belgem.backend.infrastructure.mapper.RepresentanteMapper;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * Controller REST para la gestión de Representantes.
+ *
+ * Exponde los endpoints para crear, listar, obtener, actualizar y eliminar representantes.
+ */
 @RestController
 @RequestMapping("/representantes")
 public class RepresentanteController {
@@ -38,7 +44,7 @@ public class RepresentanteController {
     }
 
     @PostMapping
-    public RepresentanteResponse crear(@RequestBody CrearRepresentanteRequest request) {
+    public RepresentanteResponse crear(@Valid @RequestBody CrearRepresentanteRequest request) {
         Representante representante = mapper.toDomain(request);
         Representante creado = crearUseCase.crear(representante);
         return mapper.toResponse(creado);
@@ -49,23 +55,27 @@ public class RepresentanteController {
         return listarUseCase.listar()
                 .stream()
                 .map(mapper::toResponse)
-                .collect(Collectors.toList());
+                .toList(); // Cambio recomendado: .toList() en lugar de collect(Collectors.toList())
     }
 
     @GetMapping("/{id}")
     public RepresentanteResponse obtener(@PathVariable Long id) {
-        Representante representante = obtenerUseCase.obtenerRepresentantePorId(id);
+        Representante representante = obtenerUseCase.obtener(id);
         return mapper.toResponse(representante);
     }
 
     @PutMapping("/{id}")
-    public RepresentanteResponse actualizar(@PathVariable Long id, @RequestBody ActualizarRepresentanteRequest request) {
+    public RepresentanteResponse actualizar(
+            @PathVariable Long id,
+            @Valid @RequestBody ActualizarRepresentanteRequest request
+    ) {
         Representante representante = mapper.toDomain(request);
         Representante actualizado = actualizarUseCase.actualizar(id, representante);
         return mapper.toResponse(actualizado);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id) {
         eliminarUseCase.eliminar(id);
     }

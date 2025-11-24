@@ -8,7 +8,7 @@ package com.belgem.backend.domain.model;
  */
 public class Representante {
 
-    private final long id;
+    private final Long id; // Usamos Long para permitir null
     private final String name;
     private final String phone;
     private final String email;
@@ -23,7 +23,7 @@ public class Representante {
             String email,
             String zone,
             String internalCode,
-            long commission
+            Long commission
     ) {
 
         if (name == null || name.isBlank()) {
@@ -34,8 +34,9 @@ public class Representante {
             throw new IllegalArgumentException("El teléfono no puede ser nulo o estar vacío");
         }
 
-        if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("El email no puede ser nulo o estar vacío");
+        // Email opcional: solo validamos si no es nulo ni vacío
+        if (email != null && !email.isBlank() && !email.contains("@")) {
+            throw new IllegalArgumentException("Email inválido");
         }
 
         if (zone == null || zone.isBlank()) {
@@ -61,7 +62,7 @@ public class Representante {
 
     // -------- Getters (clase inmutable) -------- //
 
-    public long getId() { return id; }
+    public Long getId() { return id; }
 
     public String getName() { return name; }
 
@@ -73,5 +74,5 @@ public class Representante {
 
     public String getInternalCode() { return internalCode; }
 
-    public long getCommission() { return commission; }
+    public Long getCommission() { return commission; }
 }

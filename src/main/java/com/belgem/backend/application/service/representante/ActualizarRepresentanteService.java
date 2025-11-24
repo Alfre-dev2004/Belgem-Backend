@@ -22,11 +22,12 @@ public class ActualizarRepresentanteService implements ActualizarRepresentanteUs
         Optional<Representante> existenteOpt = repository.findById(id);
 
         if (existenteOpt.isEmpty()) {
-            throw new RuntimeException("El representante con ID " + id + " no existe.");
+            throw new IllegalArgumentException("El representante con ID " + id + " no existe.");
         }
 
         Representante existente = existenteOpt.get();
 
+        // recreación pura del dominio
         Representante actualizado = new Representante(
                 existente.getId(),
                 datos.getName(),

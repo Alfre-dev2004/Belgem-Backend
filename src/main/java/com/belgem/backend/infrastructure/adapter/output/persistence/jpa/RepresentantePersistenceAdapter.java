@@ -7,9 +7,15 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
+/**
+ * Adaptador de persistencia para Representantes.
+ * Implementa el puerto de salida del dominio y delega en
+ * el repositorio JPA para realizar operaciones CRUD y consultas adicionales.
+ */
 @Component
 public class RepresentantePersistenceAdapter implements RepresentanteRepositoryPort {
+
     private final RepresentanteJpaRepository repository;
     private final RepresentanteMapper mapper;
 
@@ -32,7 +38,9 @@ public class RepresentantePersistenceAdapter implements RepresentanteRepositoryP
 
     @Override
     public List<Representante> findAll() {
-        return repository.findAll().stream().map(mapper::toDomain).collect(Collectors.toList());
+        return repository.findAll().stream()
+                .map(mapper::toDomain)
+                .toList(); // Recomendación: usar .toList() en lugar de Collectors.toList()
     }
 
     @Override
@@ -44,4 +52,10 @@ public class RepresentantePersistenceAdapter implements RepresentanteRepositoryP
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
+
+    /** Comprueba si existe un representante con un código interno dado. */
+    public boolean existsByInternalCode(String internalCode) {
+        return repository.existsByInternalCode(internalCode);
+    }
+
 }

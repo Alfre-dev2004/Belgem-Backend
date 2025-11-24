@@ -16,6 +16,12 @@ public class CrearRepresentanteService implements CrearRepresentanteUseCase {
 
     @Override
     public Representante crear(Representante representante) {
+
+        // Validación obligatoria del dominio → internalCode debe ser único
+        if (repository.existsByInternalCode(representante.getInternalCode())) {
+            throw new IllegalArgumentException("Ya existe un representante con ese código interno");
+        }
+
         return repository.save(representante);
     }
 }

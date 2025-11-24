@@ -1,5 +1,16 @@
 package com.belgem.backend.application.dto.representante;
 
+/**
+ * DTO utilizado para recibir los datos necesarios para actualizar un representante.
+ *
+ * Este objeto define la **estructura del JSON** enviado desde el frontend
+ * al realizar la petición: **PUT /representantes/{id}**.
+ *
+ * Importante:
+ *  - Es un DTO de entrada, solo transporta datos.
+ *  - No contiene lógica de negocio.
+ *  - No debe incluir validaciones ni anotaciones.
+ */
 public class ActualizarRepresentanteRequest {
 
     private String name;
@@ -9,12 +20,10 @@ public class ActualizarRepresentanteRequest {
     private String internalCode;
     private Long commission;
 
-    public ActualizarRepresentanteRequest() {}
-
     public ActualizarRepresentanteRequest(String name, String phone, String email, String zone, String internalCode, Long commission) {
         this.name = name;
-            this.phone = phone;
-            this.email = email;
+        this.phone = phone;
+        this.email = email;
         this.zone = zone;
         this.internalCode = internalCode;
         this.commission = commission;
@@ -27,10 +36,4 @@ public class ActualizarRepresentanteRequest {
     public String getInternalCode() { return internalCode; }
     public Long getCommission() { return commission; }
 
-    public void setName(String name) { this.name = name; }
-    public void setPhone(String phone) { this.phone = phone; }
-    public void setEmail(String email) { this.email = email; }
-    public void setZone(String zone) { this.zone = zone; }
-    public void setInternalCode(String internalCode) { this.internalCode = internalCode; }
-    public void setCommission(Long commission) { this.commission = commission; }
 }
