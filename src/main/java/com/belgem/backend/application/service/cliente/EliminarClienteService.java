@@ -10,15 +10,26 @@ public class EliminarClienteService implements EliminarClienteUseCase {
     // Puerto de salida hacia la capa de persistencia.
     private final ClienteRepositoryPort repo;
 
-    //constructor con inyección de dependencias.
+    // Inyección por constructor.
     public EliminarClienteService(ClienteRepositoryPort repo) {
         this.repo = repo;
     }
 
-    //Caso de uso para crear un nuevo cliente.
+    /**
+     * Caso de uso para eliminar un cliente.
+     * Antes de borrar se comprueba que el cliente exista.
+     */
     @Override
     public void eliminarCliente(Long id) {
+
+        // Validar si existe antes de eliminar
+        if (!repo.existsById(id)) {
+            throw new RuntimeException("Cliente con id " + id + " no encontrado.");
+        }
+
+        // Si existe, se elimina
         repo.deleteById(id);
     }
 }
+
 

@@ -27,4 +27,6 @@ public interface ClienteRepositoryPort {
 
     //Elimina un cliente utilizando su ID.
     void deleteById(Long id);
+
+    boolean existsByNif(String nif);
 }

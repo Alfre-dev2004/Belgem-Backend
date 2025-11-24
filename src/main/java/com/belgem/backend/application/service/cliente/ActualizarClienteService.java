@@ -8,47 +8,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class ActualizarClienteService implements ActualizarClienteUseCase {
 
-    /**
-     * Puerto de salida hacia la capa de persistencia.
-     * Permite guardar o recuperar clientes sin depender de ninguna tecnología concreta
-     * (como JPA, Mongo, Supabase, etc.).
-     */
+
     private final ClienteRepositoryPort repo;
 
     public ActualizarClienteService(ClienteRepositoryPort repo) {
         this.repo = repo;
     }
 
-
-    /**
-     * Método principal del caso de uso para actualizar un cliente.
-     *
-     * @param id ID del cliente que se desea actualizar.
-     * @param clienteActualizado Datos nuevos recibidos desde el controlador.
-     * @return El cliente actualizado, después de guardarse en la base de datos.
-     */
     @Override
-    public Cliente actualizarCliente(Long id, Cliente clienteActualizado) {
+    public Cliente actualizarCliente(Long id, Cliente datosNuevos) {
 
-        // Creamos una nueva instancia del modelo Cliente asegurando que el ID sea el correcto.
-        // Esto evita que el cliente intente actualizarse con un ID erróneo o manipulable.
-
-        Cliente clienteConId = new Cliente(
-                id,
-                clienteActualizado.getNombre(),
-                clienteActualizado.getNif(),
-                clienteActualizado.getDireccion(),
-                clienteActualizado.getCiudad(),
-                clienteActualizado.getCodigoPostal(),
-                clienteActualizado.getTelefono(),
-                clienteActualizado.getEmail(),
-                clienteActualizado.getTipoCliente(),
-                clienteActualizado.getZona(),
-                clienteActualizado.getRepresentante(),
-                clienteActualizado.getObservaciones()
+        // 1. Verificar si el cliente existe usando findById()
+        Cliente existente = repo.findById(id).orElseThrow(
+                () -> new RuntimeException("Cliente con id " + id + " no encontrado.")
         );
-        // Llamamos al repositorio para guardar el cliente actualizado.
-        return repo.save(clienteConId);
+
+        // 2. Conservar el NIF original
+        String nifOriginal = existente.getNif();
+
+        // 3. Crear cliente actualizado manteniendo el NIF
+        Cliente clienteActualizado = new Cliente(
+                id,
+                datosNuevos.getNombre(),
+                nifOriginal,  // NIF NO se actualiza
+                datosNuevos.getDireccion(),
+                datosNuevos.getCiudad(),
+                datosNuevos.getCodigoPostal(),
+                datosNuevos.getTelefono(),
+                datosNuevos.getEmail(),
+                datosNuevos.getTipoCliente(),
+                datosNuevos.getZona(),
+                datosNuevos.getRepresentante(),
+                datosNuevos.getObservaciones()
+        );
+
+        // 4. Guardar actualización
+        return repo.save(clienteActualizado);
     }
 }
+
 

@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Extiende JpaRepository para obtener operaciones CRUD automáticas.
  */
 public interface ClienteJpaRepository extends JpaRepository<ClienteJpaEntity, Long> {
+    boolean existsByNif(String nif);
 }

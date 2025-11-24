@@ -13,7 +13,7 @@ package com.belgem.backend.application.dto.cliente;
  * - Los valores son asignados en el mapper desde el modelo de dominio.
  */
 public class ClienteResponse {
-    private Long idCliente;
+    private Long id;
     private String nombre;
     private String nif;
     private String direccion;
@@ -34,7 +34,7 @@ public class ClienteResponse {
     public ClienteResponse(Long idCliente, String nombre, String nif, String direccion, String ciudad,
                            String codigoPostal, String telefono, String email, String tipoCliente,
                            String zona, String representante, String observaciones) {
-        this.idCliente = idCliente;
+        this.id = idCliente;
         this.nombre = nombre;
         this.nif = nif;
         this.direccion = direccion;
@@ -49,7 +49,7 @@ public class ClienteResponse {
     }
 
     // Estos valores son leídos por el controlador para enviarlos en la respuesta HTTP.
-    public Long getIdCliente() { return idCliente; }
+    public Long getIdCliente() { return id; }
     public String getNombre() { return nombre; }
     public String getNif() { return nif; }
     public String getDireccion() { return direccion; }

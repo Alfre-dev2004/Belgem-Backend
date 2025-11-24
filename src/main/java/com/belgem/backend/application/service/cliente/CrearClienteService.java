@@ -30,7 +30,13 @@ public class CrearClienteService implements CrearClienteUseCase {
 
     @Override
     public Cliente crearCliente(Cliente cliente) {
-        // Delegamos directamente en el repositorio.
+
+        // 1. Validamos si el NIF ya existe
+        if (repo.existsByNif(cliente.getNif())) {
+            throw new RuntimeException("Cliente with NIF " + cliente.getNif() + " already exists.");
+        }
+
+        // 2. Guardamos
         return repo.save(cliente);
     }
 }

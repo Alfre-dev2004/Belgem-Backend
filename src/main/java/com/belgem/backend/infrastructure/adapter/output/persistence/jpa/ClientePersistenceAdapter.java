@@ -75,5 +75,10 @@ public class ClientePersistenceAdapter implements ClienteRepositoryPort {
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public boolean existsByNif(String nif) {   // <--- NUEVO
+        return repository.existsByNif(nif);
+    }
 }
 
