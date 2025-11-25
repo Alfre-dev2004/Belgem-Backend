@@ -11,6 +11,7 @@ import java.util.Optional;
  * listar, comprobar existencia y eliminar representantes
  * en la capa de infraestructura.
  */
+
 public interface RepresentanteRepositoryPort {
 
     Representante save(Representante representante);
