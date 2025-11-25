@@ -8,7 +8,13 @@ import com.belgem.backend.infrastructure.mapper.ArticuloMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * Controlador REST para gestionar artículos.
+ * <p>
+ * Esta clase forma parte de la capa de entrada (web) y orquesta
+ * los casos de uso del dominio.
+ * </p>
+ */
 @RestController
 @RequestMapping("/articulos")
 public class ArticuloController {

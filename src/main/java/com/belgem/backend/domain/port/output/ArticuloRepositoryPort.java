@@ -4,8 +4,13 @@ import com.belgem.backend.domain.model.Articulo;
 
 import java.util.List;
 import java.util.Optional;
-
-public interface  ArticuloRepositoryPort {
+/**
+ * Puerto de salida para operaciones de persistencia relacionadas con {@link Articulo}.
+ * Esta interfaz no conoce nada de JPA ni de la infraestructura;
+ * simplemente define lo que la aplicación necesita del repositorio.
+ *
+ */
+public interface ArticuloRepositoryPort {
     Articulo save(Articulo articulo);
 
     Optional<Articulo> findById(Long id);
@@ -16,5 +21,8 @@ public interface  ArticuloRepositoryPort {
 
     void deleteById(Long id);
 
-    List<Articulo> findByNombreContainingIgnoreCase(String nombre);
+    List<Articulo> findByNombre(String nombre);
+
+    boolean existsByNombre(String nombre);
+
 }

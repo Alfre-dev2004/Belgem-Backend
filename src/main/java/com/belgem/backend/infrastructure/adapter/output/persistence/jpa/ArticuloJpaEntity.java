@@ -1,7 +1,13 @@
 package com.belgem.backend.infrastructure.adapter.output.persistence.jpa;
 
 import jakarta.persistence.*;
-
+/**
+ * Entidad JPA que representa la tabla {@code articulos} en la base de datos.
+ * <p>
+ * Esta clase pertenece exclusivamente a la capa de infraestructura.
+ * El dominio trabaja con {@link com.belgem.backend.domain.model.Articulo}.
+ * </p>
+ */
 @Entity
 @Table(schema = "belgem", name = "articulos")
 public class ArticuloJpaEntity {

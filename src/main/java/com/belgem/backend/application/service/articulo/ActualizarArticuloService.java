@@ -15,11 +15,17 @@ public class ActualizarArticuloService implements ActualizarArticuloUseCase {
     }
 
     @Override
-    public Articulo actualizar(Long id,Articulo datos){
+    public Articulo actualizar(Long id, Articulo datos) {
 
-        repo.findById(id)
+        Articulo existente = repo.findById(id)
                 .orElseThrow(() -> new ArticuloNoEncontradoException(id));
 
+        // Validar nombre duplicado
+        if (!existente.getNombre().equals(datos.getNombre()) &&
+                repo.existsByNombre(datos.getNombre())) {
+
+            throw new IllegalArgumentException("Ya existe un artículo con ese nombre");
+        }
         Articulo actualizado = new Articulo(
                 id,
                 datos.getCantidad(),

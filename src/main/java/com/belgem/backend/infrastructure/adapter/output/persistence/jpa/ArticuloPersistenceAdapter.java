@@ -10,6 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Adaptador de persistencia que implementa el puerto de salida
+ * {@link ArticuloRepositoryPort} usando JPA/Hibernate.
+ * <p>
+ * Aquí se traduce el modelo de dominio a entidades JPA y viceversa.
+ * </p>
+ */
 @Repository
 public class ArticuloPersistenceAdapter implements ArticuloRepositoryPort {
 
@@ -53,10 +60,16 @@ public class ArticuloPersistenceAdapter implements ArticuloRepositoryPort {
     }
 
     @Override
-    public List<Articulo> findByNombreContainingIgnoreCase(String nombre) {
+    public List<Articulo> findByNombre(String nombre) {
         return jpaRepository.findByNombreContainingIgnoreCase(nombre)
                 .stream()
                 .map(mapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public boolean existsByNombre(String nombre) {
+        return jpaRepository.existsByNombre(nombre);
+    }
+
 }

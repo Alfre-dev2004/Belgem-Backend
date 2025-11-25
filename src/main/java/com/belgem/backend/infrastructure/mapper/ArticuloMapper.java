@@ -7,12 +7,15 @@ import com.belgem.backend.application.dto.articulo.ArticuloResponse;
 import com.belgem.backend.infrastructure.adapter.output.persistence.jpa.ArticuloJpaEntity;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper responsable de convertir entre {@link Articulo} (dominio)
+ * y {@link ArticuloJpaEntity} (infraestructura).
+ */
 @Component
 public class ArticuloMapper {
 
-    // ============================
+
     //       DTO → DOMINIO
-    // ============================
 
     public Articulo toDomain(CrearArticuloRequest request) {
         return new Articulo(
@@ -34,9 +37,8 @@ public class ArticuloMapper {
         );
     }
 
-    // ============================
+
     //       DOMINIO → DTO
-    // ============================
 
     public ArticuloResponse toResponse(Articulo articulo) {
         return new ArticuloResponse(
@@ -48,9 +50,8 @@ public class ArticuloMapper {
         );
     }
 
-    // ============================
     //       DOMINIO → JPA
-    // ============================
+
 
     public ArticuloJpaEntity toEntity(Articulo articulo) {
         return new ArticuloJpaEntity(
@@ -62,9 +63,9 @@ public class ArticuloMapper {
         );
     }
 
-    // ============================
+
     //       JPA → DOMINIO
-    // ============================
+
 
     public Articulo toDomain(ArticuloJpaEntity entity) {
         return new Articulo(
