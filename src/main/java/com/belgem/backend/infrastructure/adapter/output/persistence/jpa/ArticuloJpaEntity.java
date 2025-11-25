@@ -3,7 +3,7 @@ package com.belgem.backend.infrastructure.adapter.output.persistence.jpa;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "articulos")
+@Table(schema = "belgem", name = "articulos")
 public class ArticuloJpaEntity {
 
     @Id
