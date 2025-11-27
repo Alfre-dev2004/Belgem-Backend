@@ -33,4 +33,25 @@ class ActualizarDivisaServiceTest {
         when(repo.findById(id)).thenReturn(Optional.of(existente));
         when(repo.save(any(Divisa.class))).thenReturn(actualizado);
 
-        Divisa resultado = service.actualizar(id, nuevosDatos
+        Divisa resultado = service.actualizar(id, nuevosDatos);
+
+        assertNotNull(resultado);
+        assertEquals("USX", resultado.getCode());
+        assertEquals("Dólar Belgem +10%", resultado.getName());
+
+        verify(repo, times(1)).findById(id);
+        verify(repo, times(1)).save(any(Divisa.class));
+    }
+
+    @Test
+    void debeLanzarErrorSiNoExisteLaDivisa() {
+        Long id = 99L;
+
+        when(repo.findById(id)).thenReturn(Optional.empty());
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> service.actualizar(id, new Divisa(null, "USX", "Algo")));
+
+        assertEquals("Divisa with id 99 not found.", ex.getMessage());
+    }
+}
