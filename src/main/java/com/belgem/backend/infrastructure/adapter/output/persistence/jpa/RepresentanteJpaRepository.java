@@ -16,5 +16,7 @@ public interface RepresentanteJpaRepository extends JpaRepository<RepresentanteJ
      * @return true si existe, false si no
      */
     boolean existsByInternalCode(String internalCode);
+    boolean existsByEmail(String email); // Spring Data genera automáticamente la consulta
+
 }
 

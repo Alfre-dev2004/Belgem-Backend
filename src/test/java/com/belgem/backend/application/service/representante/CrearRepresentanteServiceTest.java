@@ -29,6 +29,7 @@ class CrearRepresentanteServiceTest {
 
         // Configuramos mocks
         when(repo.existsByInternalCode("INT001")).thenReturn(false); // Código no duplicado
+        when(repo.existsByEmail("juan@mail.com")).thenReturn(false);  // Email no duplicado
         when(repo.save(any())).thenReturn(rep); // Guardado simulado
 
         // Ejecutamos el servicio
@@ -46,6 +47,8 @@ class CrearRepresentanteServiceTest {
                 null, "Juan", "600111222", "juan@mail.com", "Norte", "INT001", 10L
         );
 
+        // Simulamos que el email ya existe
+        when(repo.existsByEmail("juan@mail.com")).thenReturn(true);
 
         // Ejecutamos y verificamos excepción
         RuntimeException ex = assertThrows(RuntimeException.class, () -> service.crear(rep));
