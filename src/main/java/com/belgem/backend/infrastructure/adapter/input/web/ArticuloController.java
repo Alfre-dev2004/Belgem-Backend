@@ -16,7 +16,7 @@ import java.util.List;
  * </p>
  */
 @RestController
-@RequestMapping("/articulos")
+@RequestMapping("/api/v1/articulos")
 public class ArticuloController {
 
     private final CrearArticuloUseCase crearUC;
