@@ -4,10 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class CrearDivisaRequest {
 
-    @NotBlank(message = "El código no puede estar vacío")
     private String code;
-
-    @NotBlank(message = "El nombre no puede estar vacío")
     private String name;
 
     // Constructor vacío → Jackson lo necesita
@@ -29,6 +26,9 @@ public class CrearDivisaRequest {
 
     @Override
     public String toString() {
-        return "CrearDivisaRequest{code='" + code + "', name='" + name + "'}";
+        return "CrearDivisaRequest{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
