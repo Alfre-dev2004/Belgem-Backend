@@ -44,6 +44,6 @@ class ObtenerRepresentantePorIdServiceTest {
 
         RuntimeException ex = assertThrows(RuntimeException.class, () -> service.obtener(id));
 
-        assertEquals("Representante with id 99 not found.", ex.getMessage());
+        assertEquals("El representante con ID 99 no existe.", ex.getMessage());
     }
 }

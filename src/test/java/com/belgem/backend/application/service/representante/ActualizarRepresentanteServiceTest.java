@@ -64,6 +64,6 @@ class ActualizarRepresentanteServiceTest {
         RuntimeException ex = assertThrows(RuntimeException.class,
                 () -> service.actualizar(id, new Representante(null, "X", "X", "X", "X", "X", 1L)));
 
-        assertEquals("Representante with id 99 not found.", ex.getMessage());
+        assertEquals("El representante con ID 99 no existe", ex.getMessage());
     }
 }

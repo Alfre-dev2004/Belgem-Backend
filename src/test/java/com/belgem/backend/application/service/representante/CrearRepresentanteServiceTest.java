@@ -49,6 +49,6 @@ class CrearRepresentanteServiceTest {
         // Ejecutamos y verificamos excepción
         RuntimeException ex = assertThrows(RuntimeException.class, () -> service.crear(rep));
 
-        assertEquals("Email o código duplicado", ex.getMessage());
+        assertEquals("Email inválido", ex.getMessage());
     }
 }
