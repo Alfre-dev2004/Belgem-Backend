@@ -46,9 +46,11 @@ class CrearRepresentanteServiceTest {
                 null, "Juan", "600111222", "juan@mail.com", "Norte", "INT001", 10L
         );
 
+
         // Ejecutamos y verificamos excepción
         RuntimeException ex = assertThrows(RuntimeException.class, () -> service.crear(rep));
 
+        // Validamos el mensaje exacto
         assertEquals("Email inválido", ex.getMessage());
     }
 }

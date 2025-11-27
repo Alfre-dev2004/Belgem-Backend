@@ -50,6 +50,7 @@ class ActualizarRepresentanteServiceTest {
 
         // Validamos que se actualizó correctamente
         assertEquals("Juan Nuevo", resultado.getName());
+        assertEquals("nuevo@mail.com", resultado.getEmail());
         verify(repo).save(any()); // Verifica que se llamó a save
     }
 
@@ -62,8 +63,9 @@ class ActualizarRepresentanteServiceTest {
 
         // Ejecutamos y verificamos que lanza excepción
         RuntimeException ex = assertThrows(RuntimeException.class,
-                () -> service.actualizar(id, new Representante(null, "X", "X", "X", "X", "X", 1L)));
+                () -> service.actualizar(id, new Representante(null, "X", "X", "x@mail.com", "X", "X", 1L)));
 
-        assertEquals("El representante con ID 99 no existe", ex.getMessage());
+        // Validamos el mensaje exacto que lanza el servicio
+        assertEquals("El representante con ID 99 no existe.", ex.getMessage());
     }
 }

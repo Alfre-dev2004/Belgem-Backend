@@ -50,6 +50,7 @@ class EliminarRepresentanteServiceTest {
         // Ejecutamos y verificamos excepción
         RuntimeException ex = assertThrows(RuntimeException.class, () -> service.eliminar(id));
 
-        assertEquals("El representante con ID 99 no existe", ex.getMessage());
+        // Mensaje exacto con punto final
+        assertEquals("El representante con ID 99 no existe.", ex.getMessage());
     }
 }
