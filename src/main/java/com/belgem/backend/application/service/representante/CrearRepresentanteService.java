@@ -22,6 +22,12 @@ public class CrearRepresentanteService implements CrearRepresentanteUseCase {
             throw new IllegalArgumentException("Ya existe un representante con ese código interno");
         }
 
+        // Validación de email único
+        if (repository.existsByEmail(representante.getEmail())) {
+            throw new IllegalArgumentException("Email inválido");
+        }
+
+        // Guardar y devolver
         return repository.save(representante);
     }
 }
