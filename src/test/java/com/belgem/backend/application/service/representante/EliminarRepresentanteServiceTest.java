@@ -1,56 +1,50 @@
 package com.belgem.backend.application.service.representante;
 
-import com.belgem.backend.domain.model.Representante;
 import com.belgem.backend.domain.port.output.RepresentanteRepositoryPort;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Optional;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 class EliminarRepresentanteServiceTest {
 
-    @Mock
-    private RepresentanteRepositoryPort repo; // Mock repositorio
+    private RepresentanteRepositoryPort repository;
+    private EliminarRepresentanteService service;
 
-    @InjectMocks
-    private EliminarRepresentanteService service; // Servicio real
+    @BeforeEach
+    void setUp() {
+        repository = mock(RepresentanteRepositoryPort.class);
+        service = new EliminarRepresentanteService(repository);
+    }
 
     @Test
     void debeEliminarRepresentanteCorrectamente() {
         Long id = 1L;
 
-        // Representante existente
-        Representante rep = new Representante(id, "Juan", "600", "j@mail.com", "N", "C1", 5L);
+        // Configuramos el mock para que exista el ID
+        when(repository.existsById(id)).thenReturn(true);
 
-        // Configuramos mocks
-        when(repo.findById(id)).thenReturn(Optional.of(rep)); // Encuentra
-        doNothing().when(repo).deleteById(id); // Simula delete
+        // Ejecutamos el método
+        assertDoesNotThrow(() -> service.eliminar(id));
 
-        // Ejecutamos servicio
-        service.eliminar(id);
-
-        // Verificamos que se llamó a deleteById
-        verify(repo).deleteById(id);
+        // Verificamos que se llame al delete
+        verify(repository, times(1)).deleteById(id);
     }
 
     @Test
     void debeLanzarErrorSiNoExiste() {
-        Long id = 99L;
+        Long id = 2L;
 
-        // No existe el representante
-        when(repo.findById(id)).thenReturn(Optional.empty());
+        // Configuramos el mock para que NO exista el ID
+        when(repository.existsById(id)).thenReturn(false);
 
-        // Ejecutamos y verificamos excepción
-        RuntimeException ex = assertThrows(RuntimeException.class, () -> service.eliminar(id));
+        // Verificamos que lance la excepción
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> service.eliminar(id));
+        assertEquals("El representante con ID " + id + " no existe.", exception.getMessage());
 
-        // Mensaje exacto con punto final
-        assertEquals("El representante con ID 99 no existe.", ex.getMessage());
+        // Verificamos que delete nunca se haya llamado
+        verify(repository, never()).deleteById(anyLong());
     }
 }
