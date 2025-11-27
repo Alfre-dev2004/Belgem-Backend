@@ -25,4 +25,6 @@ public interface RepresentanteRepositoryPort {
     void deleteById(Long id);
 
     boolean existsByInternalCode(String internalCode);
+    boolean existsByEmail(String email);
+
 }

@@ -56,5 +56,8 @@ public class RepresentantePersistenceAdapter implements RepresentanteRepositoryP
     public boolean existsByInternalCode(String internalCode) {
         return repository.existsByInternalCode(internalCode);
     }
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email); // Delegamos a JPA
 
-}
+    }
+    }

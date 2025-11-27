@@ -15,9 +15,12 @@ public class EliminarRepresentanteService implements EliminarRepresentanteUseCas
 
     @Override
     public void eliminar(Long id) {
+        // Validación: el representante debe existir
         if (!repository.existsById(id)) {
             throw new IllegalArgumentException("El representante con ID " + id + " no existe.");
         }
+
+        // Eliminación
         repository.deleteById(id);
     }
 }

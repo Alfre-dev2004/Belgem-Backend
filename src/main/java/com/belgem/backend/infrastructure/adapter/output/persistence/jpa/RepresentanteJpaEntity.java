@@ -13,6 +13,7 @@ public class RepresentanteJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_representante")
     private Long id;
 
     @Column(name = "nombre", nullable = false)
@@ -27,7 +28,7 @@ public class RepresentanteJpaEntity {
     @Column(name = "zona", nullable = false)
     private String zone;
 
-    @Column(name = "codigoInterno", nullable = false)
+    @Column(name = "codigointerno", nullable = false)
     private String internalCode;
 
     @Column(name = "comision")
