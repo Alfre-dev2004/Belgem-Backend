@@ -22,6 +22,8 @@ public class ObtenerClientePorIdService implements ObtenerClientePorIdUseCase {
     @Override
     public Cliente obtenerPorId(Long id) {
         return repo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado con id: " + id));
+                .orElseThrow(() ->
+                        new IllegalArgumentException("Client with id " + id + " not found.")
+                );
     }
 }

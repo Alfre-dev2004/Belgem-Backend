@@ -42,10 +42,10 @@ public class Cliente {
                    String observaciones) {
 
         if (nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException("Name cannot be empty.");
         }
         if (email != null && !email.isBlank() && !email.contains("@")) {
-            throw new IllegalArgumentException("Email inválido");
+            throw new IllegalArgumentException("Invalid email format.");
         }
 
     // Inmutabilidad → solo asignación en constructor
