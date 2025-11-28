@@ -89,10 +89,11 @@ public class ActualizarClienteServiceTest {
         );
 
         // Act + Assert
-        RuntimeException error =
-                assertThrows(RuntimeException.class, () -> service.actualizarCliente(99L, datos));
+        IllegalArgumentException error =
+                assertThrows(IllegalArgumentException.class,
+                        () -> service.actualizarCliente(99L, datos));
 
-        assertEquals("Cliente con id 99 no encontrado.", error.getMessage());
+        assertEquals("Cliente with id 99 not found.", error.getMessage());
 
         verify(repo, times(1)).findById(99L);
         verify(repo, never()).save(any()); // IMPORTANTÍSIMO

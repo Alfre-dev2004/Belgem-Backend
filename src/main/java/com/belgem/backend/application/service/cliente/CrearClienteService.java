@@ -33,8 +33,7 @@ public class CrearClienteService implements CrearClienteUseCase {
 
         // 1. Validamos si el NIF ya existe
         if (repo.existsByNif(cliente.getNif())) {
-            throw new RuntimeException("Cliente with NIF " + cliente.getNif() + " already exists.");
-        }
+            throw new IllegalArgumentException("Cliente with NIF " + cliente.getNif() + " already exists.");        }
 
         // 2. Guardamos
         return repo.save(cliente);

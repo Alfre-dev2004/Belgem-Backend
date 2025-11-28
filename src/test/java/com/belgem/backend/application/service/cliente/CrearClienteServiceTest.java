@@ -114,9 +114,10 @@ public class CrearClienteServiceTest {
         // Indicamos que el NIF YA existe en BD
         when(repo.existsByNif("12345678A")).thenReturn(true);
 
-        Exception e = assertThrows(RuntimeException.class, () -> {
-            service.crearCliente(cliente);
-        });
+        IllegalArgumentException e = assertThrows(
+                IllegalArgumentException.class,
+                () -> service.crearCliente(cliente)
+        );
 
         assertEquals("Cliente with NIF 12345678A already exists.", e.getMessage());
 

@@ -24,8 +24,7 @@ public class EliminarClienteService implements EliminarClienteUseCase {
 
         // Validar si existe antes de eliminar
         if (!repo.existsById(id)) {
-            throw new RuntimeException("Cliente con id " + id + " no encontrado.");
-        }
+            throw new IllegalArgumentException("Client with id " + id + " not found.");        }
 
         // Si existe, se elimina
         repo.deleteById(id);

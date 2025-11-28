@@ -57,10 +57,10 @@ class EliminarClienteServiceTest {
         when(repo.existsById(99L)).thenReturn(false);
 
         // Act + Assert
-        RuntimeException error =
-                assertThrows(RuntimeException.class, () -> service.eliminarCliente(99L));
+        IllegalArgumentException error =
+                assertThrows(IllegalArgumentException.class, () -> service.eliminarCliente(99L));
 
-        assertEquals("Cliente con id 99 no encontrado.", error.getMessage());
+        assertEquals("Client with id 99 not found.", error.getMessage());
 
         verify(repo, times(1)).existsById(99L);
         verify(repo, never()).deleteById(anyLong()); // NO debe intentar borrar nada
