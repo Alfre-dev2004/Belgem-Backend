@@ -71,7 +71,7 @@ public class ClienteTest {
                 )
         );
 
-        assertEquals("El nombre no puede estar vacío", ex.getMessage());
+        assertEquals("Name cannot be empty.", ex.getMessage());
     }
 
     /**
@@ -97,7 +97,7 @@ public class ClienteTest {
                 )
         );
 
-        assertEquals("Email inválido", ex.getMessage());
+        assertEquals("Invalid email format.", ex.getMessage());
     }
 
     /**
