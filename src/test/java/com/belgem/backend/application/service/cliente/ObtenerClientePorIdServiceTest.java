@@ -70,7 +70,8 @@ public class ObtenerClientePorIdServiceTest {
         IllegalArgumentException error =
                 assertThrows(IllegalArgumentException.class, () -> service.obtenerPorId(99L));
 
-        assertEquals("Cliente no encontrado con id: 99", error.getMessage());
+        assertEquals("Client with id 99 not found.", error.getMessage());
+
         verify(repo, times(1)).findById(99L);
     }
 }
