@@ -1,2 +1,2 @@
-CREATE SCHEMA IF NOT EXISTS v1;
-SET search_path TO v1, public;
+-- Crear el schema global del proyecto Belgem
+CREATE SCHEMA IF NOT EXISTS belgem;

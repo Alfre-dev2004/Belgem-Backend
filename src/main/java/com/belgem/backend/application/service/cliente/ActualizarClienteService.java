@@ -20,7 +20,7 @@ public class ActualizarClienteService implements ActualizarClienteUseCase {
 
         // 1. Verificar si el cliente existe usando findById()
         Cliente existente = repo.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("Cliente with id " + id + " not found.")        );
+                () -> new IllegalArgumentException("Client with id " + id + " not found.")        );
 
         // 2. Conservar el NIF original
         String nifOriginal = existente.getNif();
