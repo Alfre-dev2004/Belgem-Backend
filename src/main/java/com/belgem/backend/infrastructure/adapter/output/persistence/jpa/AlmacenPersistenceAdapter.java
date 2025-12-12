@@ -55,8 +55,9 @@ public class AlmacenPersistenceAdapter implements AlmacenRepositoryPort {
     }
 
     @Override
-    public boolean existsByNombre(String nombre){
-        return jpaRepository.existsByNombre(nombre);
+    public boolean existsById(Long id) {
+        return jpaRepository.existsById(id);
     }
+
 }
 
