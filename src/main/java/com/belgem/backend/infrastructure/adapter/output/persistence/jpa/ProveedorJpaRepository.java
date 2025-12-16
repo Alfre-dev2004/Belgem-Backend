@@ -1,0 +1,21 @@
+package com.belgem.backend.infrastructure.adapter.output.persistence.jpa;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+/**
+ * Repositorio JPA para la entidad {@link ProveedorJpaEntity}.
+ * <p>
+ * Solo debe ser usado desde la capa de infraestructura,
+ * nunca directamente desde la capa de aplicación o dominio.
+ * </p>
+ */
+public interface ProveedorJpaRepository extends JpaRepository<ProveedorJpaEntity, Long> {
+
+    List<ProveedorJpaEntity> findByNombreContainingIgnoreCase(String nombre);
+
+    boolean existsByNombre(String nombre);
+
+    boolean existsByCif(String cif);
+}
