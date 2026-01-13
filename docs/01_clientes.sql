@@ -1,18 +1,17 @@
-SET search_path TO v1, public;
 
-CREATE TABLE IF NOT EXISTS cliente (
+-- Tabla del módulo Clientes
 
-    idCliente BIGSERIAL PRIMARY KEY,
-    nombre VARCHAR(120) NOT NULL,
-    nif VARCHAR(20),
-    direccion VARCHAR(200),
-    ciudad VARCHAR(120),
-    codigoPostal VARCHAR(15),
-    telefono VARCHAR(25),
-    email VARCHAR(160),
-    tipoCliente VARCHAR(60),
-    zona VARCHAR(80),
-    representante VARCHAR(120),
+CREATE TABLE IF NOT EXISTS belgem.cliente (
+    id BIGSERIAL PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    nif VARCHAR(20) NOT NULL,
+    direccion VARCHAR(255),
+    ciudad VARCHAR(100),
+    codigoPostal VARCHAR(20),
+    telefono VARCHAR(50),
+    email VARCHAR(150),
+    tipoCliente VARCHAR(50),
+    zona VARCHAR(100),
+    representante_id BIGINT,
     observaciones TEXT
-
 );
