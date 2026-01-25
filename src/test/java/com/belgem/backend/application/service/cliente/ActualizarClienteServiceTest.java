@@ -93,7 +93,7 @@ public class ActualizarClienteServiceTest {
                 assertThrows(IllegalArgumentException.class,
                         () -> service.actualizarCliente(99L, datos));
 
-        assertEquals("Cliente with id 99 not found.", error.getMessage());
+        assertEquals("Client with id 99 not found.", error.getMessage());
 
         verify(repo, times(1)).findById(99L);
         verify(repo, never()).save(any()); // IMPORTANTÍSIMO
