@@ -3,29 +3,27 @@
 
 DO $$
 BEGIN
-    -- Representantes: UNIQUE codigointerno
-    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_representante_codigointerno') THEN
+  -- Representantes: UNIQUE codigointerno
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_representante_codigointerno') THEN
 ALTER TABLE belgem.representantes
     ADD CONSTRAINT uq_representante_codigointerno UNIQUE (codigointerno);
 END IF;
 
-    -- Clientes: FK representante_id -> representantes.id_representante
-    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_cliente_representante') THEN
-ALTER TABLE belgem.cliente
-    ADD CONSTRAINT fk_cliente_representante
-        FOREIGN KEY (representante_id)
-            REFERENCES belgem.representantes(id_representante);
-END IF;
-
-    -- Clientes: UNIQUE nif (para ON CONFLICT)
-    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_cliente_nif') THEN
+  -- Clientes: UNIQUE nif (para ON CONFLICT)
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_cliente_nif') THEN
 ALTER TABLE belgem.cliente
     ADD CONSTRAINT uq_cliente_nif UNIQUE (nif);
 END IF;
 
-    -- Divisas: UNIQUE code
-    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_divisa_code') THEN
-ALTER TABLE belgem.divisas
-    ADD CONSTRAINT uq_divisa_code UNIQUE (code);
+  -- Currencies (Divisas): UNIQUE code
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_currencies_code') THEN
+ALTER TABLE belgem.currencies
+    ADD CONSTRAINT uq_currencies_code UNIQUE (code);
 END IF;
-END $$;
+
+  -- Tipo Movimiento: nombre único
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'uq_tipo_movimiento_nombre') THEN
+ALTER TABLE belgem.tipo_movimiento
+    ADD CONSTRAINT uq_tipo_movimiento_nombre UNIQUE (nombre);
+END IF;
+END $$ LANGUAGE plpgsql;
