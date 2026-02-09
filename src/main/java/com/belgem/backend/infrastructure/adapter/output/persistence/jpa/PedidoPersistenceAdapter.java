@@ -37,4 +37,9 @@ public class PedidoPersistenceAdapter implements PedidoRepositoryPort {
     public void deleteById(Long id) {
         repo.deleteById(id);
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        return repo.existsById(id);
+    }
 }
