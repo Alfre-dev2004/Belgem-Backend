@@ -119,7 +119,7 @@ public class CrearClienteServiceTest {
                 () -> service.crearCliente(cliente)
         );
 
-        assertEquals("Cliente with NIF 12345678A already exists.", e.getMessage());
+        assertEquals("Client with NIF 12345678A already exists.", e.getMessage());
 
         // save() JAMÁS debería ser llamado si el NIF existe
         verify(repo, never()).save(any());
