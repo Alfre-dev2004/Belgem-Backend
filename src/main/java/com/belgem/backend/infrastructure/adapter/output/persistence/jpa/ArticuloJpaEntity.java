@@ -1,6 +1,7 @@
 package com.belgem.backend.infrastructure.adapter.output.persistence.jpa;
 
 import jakarta.persistence.*;
+
 /**
  * Entidad JPA que representa la tabla {@code articulos} en la base de datos.
  * <p>
@@ -17,26 +18,53 @@ public class ArticuloJpaEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Integer cantidad;
-
-    private Double dto;
-
-    @Column(nullable = false)
     private String nombre;
 
     @Column(nullable = false)
-    private Double precio;
+    private String situacion; // ACTIVO | INACTIVO
+
+    @Column(name = "pvp_minimo")
+    private Double pvpMinimo;
+
+    @Column(name = "peso_kg")
+    private Double pesoKg;
+
+    @Column(name = "alto_cm")
+    private Double altoCm;
+
+    @Column(name = "ancho_cm")
+    private Double anchoCm;
+
+    @Column(name = "largo_cm")
+    private Double largoCm;
+
+    @Column(nullable = false)
+    private Boolean vendible;
 
     // Constructor vacío obligatorio para JPA
     public ArticuloJpaEntity() {}
 
     // Constructor completo
-    public ArticuloJpaEntity(Long id, Integer cantidad, Double dto, String nombre, Double precio) {
+    public ArticuloJpaEntity(
+            Long id,
+            String nombre,
+            String situacion,
+            Double pvpMinimo,
+            Double pesoKg,
+            Double altoCm,
+            Double anchoCm,
+            Double largoCm,
+            Boolean vendible
+    ) {
         this.id = id;
-        this.cantidad = cantidad;
-        this.dto = dto;
         this.nombre = nombre;
-        this.precio = precio;
+        this.situacion = situacion;
+        this.pvpMinimo = pvpMinimo;
+        this.pesoKg = pesoKg;
+        this.altoCm = altoCm;
+        this.anchoCm = anchoCm;
+        this.largoCm = largoCm;
+        this.vendible = vendible;
     }
 
     // Getters y setters (JPA los necesita)
@@ -49,22 +77,6 @@ public class ArticuloJpaEntity {
         this.id = id;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Double getDto() {
-        return dto;
-    }
-
-    public void setDto(Double dto) {
-        this.dto = dto;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -73,11 +85,59 @@ public class ArticuloJpaEntity {
         this.nombre = nombre;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public String getSituacion() {
+        return situacion;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setSituacion(String situacion) {
+        this.situacion = situacion;
+    }
+
+    public Double getPvpMinimo() {
+        return pvpMinimo;
+    }
+
+    public void setPvpMinimo(Double pvpMinimo) {
+        this.pvpMinimo = pvpMinimo;
+    }
+
+    public Double getPesoKg() {
+        return pesoKg;
+    }
+
+    public void setPesoKg(Double pesoKg) {
+        this.pesoKg = pesoKg;
+    }
+
+    public Double getAltoCm() {
+        return altoCm;
+    }
+
+    public void setAltoCm(Double altoCm) {
+        this.altoCm = altoCm;
+    }
+
+    public Double getAnchoCm() {
+        return anchoCm;
+    }
+
+    public void setAnchoCm(Double anchoCm) {
+        this.anchoCm = anchoCm;
+    }
+
+    public Double getLargoCm() {
+        return largoCm;
+    }
+
+    public void setLargoCm(Double largoCm) {
+        this.largoCm = largoCm;
+    }
+
+    public Boolean getVendible() {
+        return vendible;
+    }
+
+    public void setVendible(Boolean vendible) {
+        this.vendible = vendible;
     }
 }

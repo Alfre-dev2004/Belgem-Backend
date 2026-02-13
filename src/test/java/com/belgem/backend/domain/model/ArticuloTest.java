@@ -11,54 +11,122 @@ public class ArticuloTest {
     void debeCrearArticuloValido() {
         // ARRANGE
         Long id = 1L;
-        Integer cantidad = 10;
-        Double dto = 15.0;
         String nombre = "Teclado";
-        Double precio = 50.0;
+        String situacion = "ACTIVO";
+        Double pvpMinimo = 50.0;
+        Double pesoKg = 1.2;
+        Double altoCm = 5.0;
+        Double anchoCm = 40.0;
+        Double largoCm = 15.0;
+        Boolean vendible = true;
 
         // ACT
-        Articulo articulo = new Articulo(id, cantidad, dto, nombre, precio);
+        Articulo articulo = new Articulo(
+                id,
+                nombre,
+                situacion,
+                pvpMinimo,
+                pesoKg,
+                altoCm,
+                anchoCm,
+                largoCm,
+                vendible
+        );
 
         // ASSERT
         assertEquals(id, articulo.getId());
-        assertEquals(cantidad, articulo.getCantidad());
-        assertEquals(dto, articulo.getDto());
         assertEquals(nombre, articulo.getNombre());
-        assertEquals(precio, articulo.getPrecio());
+        assertEquals(situacion, articulo.getSituacion());
+        assertEquals(pvpMinimo, articulo.getPvpMinimo());
+        assertEquals(pesoKg, articulo.getPesoKg());
+        assertEquals(altoCm, articulo.getAltoCm());
+        assertEquals(anchoCm, articulo.getAnchoCm());
+        assertEquals(largoCm, articulo.getLargoCm());
+        assertEquals(vendible, articulo.getVendible());
     }
 
     @Test
     void noDebePermitirNombreVacio() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Articulo(1L, 5, 10.0, "  ", 100.0)
+                new Articulo(
+                        1L,
+                        "  ",
+                        "ACTIVO",
+                        50.0,
+                        1.0,
+                        10.0,
+                        10.0,
+                        10.0,
+                        true
+                )
         );
     }
 
     @Test
-    void noDebePermitirPrecioNegativo() {
+    void noDebePermitirPvpMinimoNegativo() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Articulo(1L, 5, 10.0, "Laptop", -1.0)
+                new Articulo(
+                        1L,
+                        "Laptop",
+                        "ACTIVO",
+                        -1.0,
+                        1.0,
+                        10.0,
+                        10.0,
+                        10.0,
+                        true
+                )
         );
     }
 
     @Test
-    void noDebePermitirCantidadNegativa() {
+    void noDebePermitirPesoNegativo() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Articulo(1L, -3, 10.0, "Mouse", 15.0)
+                new Articulo(
+                        1L,
+                        "Mouse",
+                        "ACTIVO",
+                        15.0,
+                        -3.0,
+                        10.0,
+                        10.0,
+                        10.0,
+                        true
+                )
         );
     }
 
     @Test
-    void noDebePermitirDtoMenorQueCero() {
+    void noDebePermitirDimensionesNegativas() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Articulo(1L, 10, -1.0, "Cargador", 20.0)
+                new Articulo(
+                        1L,
+                        "Pantalla",
+                        "ACTIVO",
+                        120.0,
+                        5.0,
+                        -1.0,
+                        50.0,
+                        20.0,
+                        true
+                )
         );
     }
 
     @Test
-    void noDebePermitirDtoMayorQue100() {
+    void noDebePermitirSituacionInvalida() {
         assertThrows(IllegalArgumentException.class, () ->
-                new Articulo(1L, 10, 150.0, "Pantalla", 120.0)
+                new Articulo(
+                        1L,
+                        "Cargador",
+                        "BORRADO",
+                        20.0,
+                        0.5,
+                        5.0,
+                        5.0,
+                        5.0,
+                        true
+                )
         );
     }
 }

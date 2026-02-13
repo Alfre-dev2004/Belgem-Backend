@@ -1,52 +1,71 @@
 package com.belgem.backend.domain.model;
 
 public class Articulo {
+
     private final Long id;
-    private final Integer cantidad;
-    private final Double dto;
     private final String nombre;
-    private final Double precio;
+    private final String situacion;
+    private final Double pvpMinimo;
+    private final Double pesoKg;
+    private final Double altoCm;
+    private final Double anchoCm;
+    private final Double largoCm;
+    private final Boolean vendible;
 
-    public Articulo(Long id, Integer cantidad, Double dto, String nombre, Double precio) {
+    public Articulo(
+            Long id,
+            String nombre,
+            String situacion,
+            Double pvpMinimo,
+            Double pesoKg,
+            Double altoCm,
+            Double anchoCm,
+            Double largoCm,
+            Boolean vendible
+    ) {
+
         if (nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException("El nombre es obligatorio");
         }
 
-        if (precio == null || precio < 0) {
-            throw new IllegalArgumentException("El precio no puede ser negativo");
+        if (situacion == null ||
+                (!situacion.equals("ACTIVO") && !situacion.equals("INACTIVO"))) {
+            throw new IllegalArgumentException("Situación inválida (ACTIVO | INACTIVO)");
         }
 
-        if (cantidad == null || cantidad < 0) {
-            throw new IllegalArgumentException("El stock no puede ser negativo");
+        if (pvpMinimo != null && pvpMinimo < 0) {
+            throw new IllegalArgumentException("El PVP mínimo no puede ser negativo");
         }
 
-        if (dto != null && (dto < 0 || dto > 100)) {
-            throw new IllegalArgumentException("El descuento debe ser entre 0 y 100");
-        }
+        validarNoNegativo(pesoKg, "peso");
+        validarNoNegativo(altoCm, "alto");
+        validarNoNegativo(anchoCm, "ancho");
+        validarNoNegativo(largoCm, "largo");
+
         this.id = id;
-        this.cantidad = cantidad;
-        this.dto = dto;
         this.nombre = nombre;
-        this.precio = precio;
+        this.situacion = situacion;
+        this.pvpMinimo = pvpMinimo;
+        this.pesoKg = pesoKg;
+        this.altoCm = altoCm;
+        this.anchoCm = anchoCm;
+        this.largoCm = largoCm;
+        this.vendible = vendible != null ? vendible : Boolean.TRUE;
     }
 
-    public Long getId() {
-        return id;
+    private void validarNoNegativo(Double valor, String campo) {
+        if (valor != null && valor < 0) {
+            throw new IllegalArgumentException("El " + campo + " no puede ser negativo");
+        }
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public Double getDto() {
-        return dto;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public Double getPrecio() {
-        return precio;
-    }
+    public Long getId() { return id; }
+    public String getNombre() { return nombre; }
+    public String getSituacion() { return situacion; }
+    public Double getPvpMinimo() { return pvpMinimo; }
+    public Double getPesoKg() { return pesoKg; }
+    public Double getAltoCm() { return altoCm; }
+    public Double getAnchoCm() { return anchoCm; }
+    public Double getLargoCm() { return largoCm; }
+    public Boolean getVendible() { return vendible; }
 }

@@ -25,8 +25,29 @@ public class ObtenerArticuloPorNombreServiceTest {
     @Test
     void debeDevolverArticulosCuandoExisten() {
         // ARRANGE
-        Articulo a1 = new Articulo(1L, 10, 0.0, "Teclado", 25.0);
-        Articulo a2 = new Articulo(2L, 5, 0.0, "Teclado", 30.0);
+        Articulo a1 = new Articulo(
+                1L,
+                "Teclado",
+                "ACTIVO",
+                25.0,
+                1.2,
+                5.0,
+                30.0,
+                10.0,
+                true
+        );
+
+        Articulo a2 = new Articulo(
+                2L,
+                "Teclado",
+                "ACTIVO",
+                30.0,
+                1.5,
+                6.0,
+                35.0,
+                12.0,
+                true
+        );
 
         when(repo.findByNombre("Teclado")).thenReturn(List.of(a1, a2));
 
@@ -36,7 +57,7 @@ public class ObtenerArticuloPorNombreServiceTest {
         // ASSERT
         assertEquals(2, resultado.size());
         assertEquals("Teclado", resultado.get(0).getNombre());
-        assertEquals(25.0, resultado.get(0).getPrecio());
+        assertEquals(25.0, resultado.get(0).getPvpMinimo());
 
         verify(repo, times(1)).findByNombre("Teclado");
     }

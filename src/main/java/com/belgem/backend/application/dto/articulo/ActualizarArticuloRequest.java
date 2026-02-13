@@ -1,7 +1,13 @@
 package com.belgem.backend.application.dto.articulo;
 
-public record ActualizarArticuloRequest(Integer cantidad,
-                                        Double dto,
-                                        String nombre,
-                                        Double precio) {
+public record ActualizarArticuloRequest(
+        String nombre,
+        String situacion,
+        Double pvpMinimo,
+        Double pesoKg,
+        Double altoCm,
+        Double anchoCm,
+        Double largoCm,
+        Boolean vendible
+) {
 }
