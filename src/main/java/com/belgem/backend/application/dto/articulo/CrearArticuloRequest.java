@@ -1,7 +1,13 @@
 package com.belgem.backend.application.dto.articulo;
 
-public record CrearArticuloRequest(Integer cantidad,
-                                   Double dto,
-                                   String nombre,
-                                   Double precio) {
+public record CrearArticuloRequest(
+        String nombre,
+        String situacion,
+        Double pvpMinimo,
+        Double pesoKg,
+        Double altoCm,
+        Double anchoCm,
+        Double largoCm,
+        Boolean vendible
+) {
 }

@@ -27,10 +27,14 @@ public class CrearArticuloServiceTest {
     void setUp() {
         articulo = new Articulo(
                 1L,
-                10,
-                10.0,
                 "Teclado",
-                20.0
+                "ACTIVO",
+                20.0,
+                1.2,
+                5.0,
+                30.0,
+                10.0,
+                true
         );
     }
 
@@ -46,7 +50,9 @@ public class CrearArticuloServiceTest {
         // ASSERT
         assertNotNull(resultado);
         assertEquals("Teclado", resultado.getNombre());
-        assertEquals(20.0, resultado.getPrecio());
+        assertEquals(20.0, resultado.getPvpMinimo());
+        assertEquals("ACTIVO", resultado.getSituacion());
+        assertTrue(resultado.getVendible());
 
         verify(repo).existsByNombre("Teclado");
         verify(repo).save(articulo);
@@ -68,5 +74,4 @@ public class CrearArticuloServiceTest {
         verify(repo).existsByNombre("Teclado");
         verify(repo, never()).save(any());
     }
-
 }

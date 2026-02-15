@@ -28,10 +28,14 @@ public class ActualizarArticuloService implements ActualizarArticuloUseCase {
         }
         Articulo actualizado = new Articulo(
                 id,
-                datos.getCantidad(),
-                datos.getDto(),
                 datos.getNombre(),
-                datos.getPrecio()
+                datos.getSituacion(),
+                datos.getPvpMinimo(),
+                datos.getPesoKg(),
+                datos.getAltoCm(),
+                datos.getAnchoCm(),
+                datos.getLargoCm(),
+                datos.getVendible()
         );
         return repo.save(actualizado);
     }

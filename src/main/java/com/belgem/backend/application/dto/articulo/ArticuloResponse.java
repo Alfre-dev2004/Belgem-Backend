@@ -1,8 +1,14 @@
 package com.belgem.backend.application.dto.articulo;
 
-public record ArticuloResponse(Long id,
-                               Integer cantidad,
-                               Double dto,
-                               String nombre,
-                               Double precio) {
+public record ArticuloResponse(
+        Long id,
+        String nombre,
+        String situacion,
+        Double pvpMinimo,
+        Double pesoKg,
+        Double altoCm,
+        Double anchoCm,
+        Double largoCm,
+        Boolean vendible
+) {
 }
