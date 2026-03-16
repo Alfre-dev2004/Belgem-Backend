@@ -15,11 +15,11 @@ public final class TipoMovimientoMapper {
 
     public static TipoMovimiento toDomain(TipoMovimientoJpaEntity e){
         if(e == null) return null;
-        return new TipoMovimiento(e.getId(), e.getNombre(), e.getDescripcion());
+        return new TipoMovimiento(e.getId(), e.getNombre(), e.getDescripcion(), e.getSigno());
     }
 
     public static TipoMovimientoJpaEntity toEntity(TipoMovimiento d){
         if(d == null) return null;
-        return new TipoMovimientoJpaEntity(d.getId(), d.getNombre(), d.getDescripcion());
+        return new TipoMovimientoJpaEntity(d.getId(), d.getNombre(), d.getDescripcion(), d.getSigno());
     }
 }

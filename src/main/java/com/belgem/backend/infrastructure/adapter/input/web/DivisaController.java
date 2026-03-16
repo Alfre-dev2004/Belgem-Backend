@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/divisas")
+@RequestMapping("/api/v1/divisas")
 public class DivisaController {
 
     private final CrearDivisaUseCase crearDivisa;

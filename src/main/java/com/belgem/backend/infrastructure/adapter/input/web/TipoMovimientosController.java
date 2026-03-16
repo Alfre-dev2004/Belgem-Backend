@@ -16,10 +16,8 @@ import java.util.List;
 
 /**
  * Controlador REST para el catálogo de Tipos de Movimiento.
- * <p>
  * Este controlador depende únicamente de puertos de entrada (UseCases),
  * manteniendo la arquitectura hexagonal.
- * </p>
  */
 @RestController
 @RequestMapping("/api/v1/tipos-movimiento")
@@ -49,7 +47,12 @@ public class TipoMovimientosController {
     @ResponseStatus(HttpStatus.CREATED)
     public TipoMovimientoResponse crear(@RequestBody CrearTipoMovimientoRequest request) {
         TipoMovimiento creado = crear.crear(
-                new TipoMovimiento(null, request.getNombre(), request.getDescripcion())
+                new TipoMovimiento(
+                        null,
+                        request.getNombre(),
+                        request.getDescripcion(),
+                        request.getSigno()
+                )
         );
         return toResponse(creado);
     }
@@ -67,10 +70,16 @@ public class TipoMovimientosController {
     @PutMapping("/{id}")
     public TipoMovimientoResponse actualizar(
             @PathVariable Long id,
-            @RequestBody ActualizarTipoMovimientoRequest request)  {
+            @RequestBody ActualizarTipoMovimientoRequest request
+    ) {
         TipoMovimiento actualizado = actualizar.actualizar(
                 id,
-                new TipoMovimiento(id, request.getNombre(), request.getDescripcion())
+                new TipoMovimiento(
+                        id,
+                        request.getNombre(),
+                        request.getDescripcion(),
+                        request.getSigno()
+                )
         );
         return toResponse(actualizado);
     }
@@ -81,13 +90,12 @@ public class TipoMovimientosController {
         eliminar.eliminar(id);
     }
 
-
-
     private TipoMovimientoResponse toResponse(TipoMovimiento d) {
         TipoMovimientoResponse res = new TipoMovimientoResponse();
         res.setId(d.getId());
         res.setNombre(d.getNombre());
         res.setDescripcion(d.getDescripcion());
+        res.setSigno(d.getSigno());
         return res;
     }
 }
