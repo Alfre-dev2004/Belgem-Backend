@@ -14,7 +14,7 @@ import java.util.List;
  *  Controlador REST del módulo CLIENTES.
  */
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/api/v1/clientes")
 public class ClienteController {
 
     private final CrearClienteUseCase crear;

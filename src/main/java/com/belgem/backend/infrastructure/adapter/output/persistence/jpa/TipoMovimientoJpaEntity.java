@@ -8,7 +8,7 @@ import jakarta.persistence.*;
  */
 
 @Entity
-@Table(name = "tipo_movimiento")
+@Table(name = "tipo_movimiento", schema = "belgem")
 public class TipoMovimientoJpaEntity {
 
     @Id
@@ -21,12 +21,16 @@ public class TipoMovimientoJpaEntity {
     @Column(length = 255)
     private String descripcion;
 
+    @Column(nullable = false)
+    private Integer signo;
+
     public TipoMovimientoJpaEntity() {}
 
-    public TipoMovimientoJpaEntity(Long id, String nombre, String descripcion) {
+    public TipoMovimientoJpaEntity(Long id, String nombre, String descripcion, Integer signo) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.signo = signo;
     }
 
 
@@ -38,4 +42,8 @@ public class TipoMovimientoJpaEntity {
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public Integer getSigno() { return signo; }
+    public void setSigno(Integer signo) { this.signo = signo; }
+
 }

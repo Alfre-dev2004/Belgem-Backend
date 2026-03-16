@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/pedidos/{pedidoId}/detalles")
+@RequestMapping("/api/v1/pedidos/{pedidoId}/detalles")
 public class PedidoDetalleController {
 
     private final CrearPedidoDetalleUseCase crearPedidoDetalle;

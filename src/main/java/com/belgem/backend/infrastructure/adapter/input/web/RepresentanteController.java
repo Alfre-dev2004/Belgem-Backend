@@ -17,7 +17,7 @@ import java.util.List;
  * Exponde los endpoints para crear, listar, obtener, actualizar y eliminar representantes.
  */
 @RestController
-@RequestMapping("/representantes")
+@RequestMapping("/api/v1/representantes")
 public class RepresentanteController {
 
     private final CrearRepresentanteUseCase crearUseCase;
