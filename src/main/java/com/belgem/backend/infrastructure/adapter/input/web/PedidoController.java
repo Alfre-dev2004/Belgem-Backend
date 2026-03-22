@@ -3,10 +3,7 @@ package com.belgem.backend.infrastructure.adapter.input.web;
 import com.belgem.backend.application.dto.pedido.ActualizarEstadoRequest;
 import com.belgem.backend.application.dto.pedido.CrearPedidoRequest;
 import com.belgem.backend.domain.model.Pedido;
-import com.belgem.backend.domain.port.input.ActualizarPedidoUseCase;
-import com.belgem.backend.domain.port.input.CrearPedidoUseCase;
-import com.belgem.backend.domain.port.input.EliminarPedidoUseCase;
-import com.belgem.backend.domain.port.input.ListarPedidoUseCase;
+import com.belgem.backend.domain.port.input.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,16 +17,19 @@ public class PedidoController {
     private final ListarPedidoUseCase listarPedidos;
     private final ActualizarPedidoUseCase actualizarPedido;
     private final EliminarPedidoUseCase eliminarPedido;
+    private final ObtenerPedidoUseCase obtenerPedido;
 
     public PedidoController(CrearPedidoUseCase crearPedido,
                             ListarPedidoUseCase listarPedidos,
                             ActualizarPedidoUseCase actualizarPedido,
-                            EliminarPedidoUseCase eliminarPedido)
+                            EliminarPedidoUseCase eliminarPedido,
+                            ObtenerPedidoUseCase obtenerPedido)
     {
         this.crearPedido = crearPedido;
         this.listarPedidos = listarPedidos;
         this.actualizarPedido = actualizarPedido;
         this.eliminarPedido = eliminarPedido;
+        this.obtenerPedido = obtenerPedido;
     }
 
     @PostMapping
@@ -46,6 +46,11 @@ public class PedidoController {
     @GetMapping
     public List<Pedido> listar() {
         return listarPedidos.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Pedido obtenerPorId(@PathVariable Long id) {
+        return obtenerPedido.ObtenerById(id);
     }
 
     @PatchMapping("/{id}/estado")
